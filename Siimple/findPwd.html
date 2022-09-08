@@ -78,27 +78,20 @@
     <main class="form-signin">
         <form>
             <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
-            <h1 class="h3 mb-7 fw-normal">로그인</h1>
+            <h1 class="h3 mb-7 fw-normal">비밀번호 찾기</h1>
 
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">ID</label>
+                <input type="email" class="form-control" id="idInput" placeholder="name@example.com">
+                <label for="idInput" >ID</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
+                <input type="tel" class="form-control" id="telInput" placeholder="휴대폰 번호">
+                <label for="telInput">휴대폰 번호</label>
             </div>
 
-            <div class="checkbox mb-3 mt-3">
-                <label>
-                <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
             <div class="row"> 
               <div class="col-md-12">
-                <button class="btn btn-lg btn-primary col-md-5 mt-3" type="button" onclick="login()">로그인</button>
-                <button class="btn btn-lg btn-primary col-md-5 mt-3" type="button" onclick="location.href='signup.html'">회원가입</button>
-                <p class="mt-3"><a href="findPwd.html" >비밀번호 찾기</a></p>
+                <button class="btn btn-lg btn-primary col-md-12 mt-3" type="button" onclick="findpwd()"> 찾기</button>
               </div>
                 
             </div>        

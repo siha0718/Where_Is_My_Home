@@ -162,3 +162,19 @@ function logout() {
     localStorage.setItem("login", false);
     
 }
+
+function findpwd() {
+  let id = document.getElementById("idInput").value;
+  let tel = document.getElementById("telInput").value;
+  // 로컬스토리지에 "user" 키로 저장된 item 가져와서 json 객체로 만들기
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (user.id && user.tel && user.id === id && user.tel === tel ) {
+    alert("비밀번호는 " + user.password + "입니다" );
+
+    window.location.replace('signin.html');
+
+  } else {
+    alert("정보가 일치하지 않습니다!");
+  }
+}
