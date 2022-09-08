@@ -109,8 +109,6 @@ function regist() {
     return;
   } else {
     // input data로 user 만들기
-    const userObj = [];
-
     const user = {
       id: id,
       password: password,
@@ -120,7 +118,6 @@ function regist() {
     };
 
     // user 객체 문자열로 바꿔서 로컬스토리지에 저장
-    localStorage.setItem(userObj);
     localStorage.setItem("user", JSON.stringify(user));
     alert("사용자 등록 성공!");
     // 로그인 화면으로 돌아가기
@@ -180,51 +177,44 @@ function findpwd() {
 }
 
 
-
-
 /* ---------------------------
 // 회원정보 수정
 -----------------------------*/
 
-const user = JSON.parse(localStorage.getItem("user"));
-var userid = user.id;
-console.log(user.id);
-document.getElementById('loginid').innerHTML = userid;
+function getUserInfo() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  document.getElementById("updateId").value = user.id;
+  document.getElementById("updateName").value = user.name;
+  document.getElementById("updateAddress").value = user.address;
+  document.getElementById("updateTel").value = user.tel;
+}
 
+function updateUserInfo() {
+  // 문서에서 id 로 input data 가져오기
+  let id = document.getElementById("updateId").value;
+  let password = document.getElementById("updatePassword").value;
+  let name = document.getElementById("updateName").value;
+  let address = document.getElementById("updateAddress").value;
+  let tel = document.getElementById("updateTel").value;
 
-
-function changePassword() {
-   // 문서에서 id로 input data 가져오기
-   let nowPwd = document.getElementById("nowPassword").value;
-   let changePwd = document.getElementById("changePwd").value;
-   let changePwdCheck = document.getElementById("changePwdCheck").value;
- 
-   // 로컬스토리지에 "user" 키로 저장된 item 가져와서 json 객체로 만들기
-   const nowUser = JSON.parse(localStorage.getItem("user"));
-  
-   console.log(user.password);
-   // 입력값 검증
-   if (nowUser.password === nowPwd && changePwd === changePwdCheck) {    
-    
+  // 입력값 검증
+  if (!id || !password || !name || !address || !tel) {
+    alert("빈칸이 없도록 입력해주세요.");
+    return;
+  } else {
     // input data로 user 만들기
-      const user = {
-        id: nowUser.id,
-        password: changePwd,
-        name: nowUser.name,
-        address: nowUser.address,
-        tel: nowUser.tel,
-      };
+    const user = {
+      id: id,
+      password: password,
+      name: name,
+      address: address,
+      tel: tel,
+    };
 
-
-      localStorage.setItem("user", JSON.stringify(user));
-
-      alert("수정이 완료되었습니다");
-      // 로그인 화면으로 돌아가기
-      window.location.replace("modify.html");
-        
-    } else {
-      alert("비밀번호를 확인해 주세요");
-    }
-
-
+    // user 객체 문자열로 바꿔서 로컬스토리지에 저장
+    localStorage.setItem("user", JSON.stringify(user));
+    alert("회원정보 수정이 완료됐습니다.");
+    // 로그인 화면으로 돌아가기
+    window.location.replace("index.html");
+  }
 }
