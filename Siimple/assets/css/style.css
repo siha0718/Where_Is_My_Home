@@ -780,3 +780,11 @@ apartmentList.html
  .nav-menu .afterLogin {
   display: none;
 }
+
+
+
+#loginid {
+  line-height: 55px;
+  text-align: left;
+}
+

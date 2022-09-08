@@ -178,3 +178,53 @@ function findpwd() {
     alert("정보가 일치하지 않습니다!");
   }
 }
+
+
+
+
+/* ---------------------------
+// 회원정보 수정
+-----------------------------*/
+
+const user = JSON.parse(localStorage.getItem("user"));
+var userid = user.id;
+console.log(user.id);
+document.getElementById('loginid').innerHTML = userid;
+
+
+
+function changePassword() {
+   // 문서에서 id로 input data 가져오기
+   let nowPwd = document.getElementById("nowPassword").value;
+   let changePwd = document.getElementById("changePwd").value;
+   let changePwdCheck = document.getElementById("changePwdCheck").value;
+ 
+   // 로컬스토리지에 "user" 키로 저장된 item 가져와서 json 객체로 만들기
+   const nowUser = JSON.parse(localStorage.getItem("user"));
+  
+   console.log(user.password);
+   // 입력값 검증
+   if (nowUser.password === nowPwd && changePwd === changePwdCheck) {    
+    
+    // input data로 user 만들기
+      const user = {
+        id: nowUser.id,
+        password: changePwd,
+        name: nowUser.name,
+        address: nowUser.address,
+        tel: nowUser.tel,
+      };
+
+
+      localStorage.setItem("user", JSON.stringify(user));
+
+      alert("수정이 완료되었습니다");
+      // 로그인 화면으로 돌아가기
+      window.location.replace("modify.html");
+        
+    } else {
+      alert("비밀번호를 확인해 주세요");
+    }
+
+
+}
