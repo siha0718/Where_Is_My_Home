@@ -92,3 +92,63 @@ function viewMarker(office) {
 
   displayMarker(myLatLng, message, markerImage);
 }
+
+
+
+function regist() {
+  // 문서에서 id 로 input data 가져오기
+  let id = document.getElementById("inputName").value;
+  let password = document.getElementById("inputPassword").value;
+  let name = document.getElementById("inputUserName").value;
+  let address = document.getElementById("inputAddress").value;
+  let tel = document.getElementById("inputTel").value;
+
+  // 입력값 검증
+  if (!id || !password || !name || !address || !tel) {
+    alert("빈칸이 없도록 입력해주세요.");
+    return;
+  } else {
+    // input data로 user 만들기
+    const user = {
+      id: id,
+      password: password,
+      name: name,
+      address: address,
+      tel: tel,
+    };
+
+    // user 객체 문자열로 바꿔서 로컬스토리지에 저장
+    localStorage.setItem("user", JSON.stringify(user));
+    alert("사용자 등록 성공!");
+    // 로그인 화면으로 돌아가기
+    window.location.replace("signin.html");
+  }
+}
+
+function login() {
+  // 문서에서 id로 input data 가져오기
+  let id = document.getElementById("floatingInput").value;
+  let password = document.getElementById("floatingPassword").value;
+
+  // 로컬스토리지에 "user" 키로 저장된 item 가져와서 json 객체로 만들기
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  // 입력값 검증
+  if (user.id && user.password && user.id === id && user.password === password) {
+    alert("로그인 성공 !");
+    
+    document.querySelector(".nav-menu a.beforeLogin").style.display = "none";
+    localStorage.setItem("login", true);
+    var con = document.getElementsByClassName("afterLogin");
+    
+    for(let i=0;i<con.length;i++){
+        const el = con[i];
+        el.style.display = "block";      
+    }
+
+    //window.location.href('index.html');
+
+  } else {
+    alert("로그인 실패 !");
+  }
+}

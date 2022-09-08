@@ -775,3 +775,8 @@ apartmentList.html
    text-align: center;
 
  }
+
+
+ .nav-menu .afterLogin {
+  display: none;
+}
