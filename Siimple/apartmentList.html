@@ -278,6 +278,8 @@
     }
 
     ///////////////////////// 아파트 매매 정보 /////////////////////////
+    var markers = [];
+    var infoWindows = [];
     document
       .querySelector("#list-btn")
       .addEventListener("click", function () {
@@ -335,16 +337,28 @@
 
               // 마커를 표시할 위치와 title 객체 배열입니다 
               var marker = new kakao.maps.Marker({
-                  map: map,
-                  position: coords
-              });
+                    map: map,
+                    position: coords
+                });
 
-              // 인포윈도우로 장소에 대한 설명을 표시합니다
-              var infowindow = new kakao.maps.InfoWindow({
-                content:
-                  '<div style="width:150px;text-align:center;padding:6px 0;">선택위치</div>',
-              });
-              infowindow.open(map, marker);
+                markers.push(marker);
+
+                for(var i=0; i<markers.length-1; i++) {
+                  markers[i].setMap(null);
+                }
+
+                // 인포윈도우로 장소에 대한 설명을 표시합니다
+                var infowindow = new kakao.maps.InfoWindow({
+                  content:
+                    '<div style="width:150px;text-align:center;padding:6px 0;">선택위치</div>',
+                });
+
+                infoWindows.push(infowindow);
+                for(var i=0; i<infoWindows.length-1; i++) {
+                  infoWindows[i].setMap(null);
+                }
+                infoWindows[infoWindows.length-1].open(map, marker);
+
 
               // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
               map.setCenter(coords);
