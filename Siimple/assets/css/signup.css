@@ -22,6 +22,14 @@ input {
 
 }
 
+label {
+  line-height: 60px;
+}
+
+.title{
+  margin-bottom: 40px;
+}
+
 .form-signin {
   width: 100%;
   max-width: 600px;

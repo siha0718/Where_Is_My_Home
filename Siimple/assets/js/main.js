@@ -109,6 +109,8 @@ function regist() {
     return;
   } else {
     // input data로 user 만들기
+    const userObj = [];
+
     const user = {
       id: id,
       password: password,
@@ -118,6 +120,7 @@ function regist() {
     };
 
     // user 객체 문자열로 바꿔서 로컬스토리지에 저장
+    localStorage.setItem(userObj);
     localStorage.setItem("user", JSON.stringify(user));
     alert("사용자 등록 성공!");
     // 로그인 화면으로 돌아가기
@@ -146,9 +149,16 @@ function login() {
         el.style.display = "block";      
     }
 
-    //window.location.href('index.html');
+    window.location.replace('index.html');
 
   } else {
     alert("로그인 실패 !");
   }
+}
+
+
+function logout() {
+  
+    localStorage.setItem("login", false);
+    
 }
