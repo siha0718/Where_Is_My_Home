@@ -14,7 +14,7 @@ body {
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #fff7f2;
+  background-color: #ffffff;
 }
 
 input {
@@ -24,7 +24,7 @@ input {
 
 .form-signin {
   width: 100%;
-  max-width: 600px; */
+  max-width: 600px;
   padding: 15px;
   margin: auto;
 }
